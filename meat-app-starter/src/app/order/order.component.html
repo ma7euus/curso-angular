@@ -24,18 +24,18 @@
                 <div class="col-sm-6 col-xs-12">
                     <mt-input-container errorMessage="Campo obrigatório com no mínimo 5 caracteres" label="Endereço">
                         <input type="text" name="address" required minlength="5" ngModel class="form-control"
-                               id="inputSuccess" placeholder="Endereço" autocomplete="off">
+                               placeholder="Endereço" autocomplete="off">
                     </mt-input-container>
                 </div>
                 <div class="col-sm-3 col-xs-6">
                     <mt-input-container errorMessage="Campo obrigatório e somente números" label="Número">
-                        <input type="text" name="number" required ngModel class="form-control" id="inputSuccess"
+                        <input type="text" name="number" required ngModel class="form-control"
                                placeholder="Número" pattern="^[0-9]*$" autocomplete="off">
                     </mt-input-container>
                 </div>
                 <div class="col-sm-3 col-xs-6">
                     <mt-input-container label="Complemento">
-                        <input type="text" name="optional" ngModel class="form-control" id="inputSuccess"
+                        <input type="text" name="optionalAddress" ngModel class="form-control"
                                placeholder="Complemento">
                     </mt-input-container>
                 </div>
@@ -82,8 +82,9 @@
 
         <div class="row">
             <div class="col-xs-12">
-                <button href="order-summary.html" [disabled]="!form.valid || cartItems().length === 0" class="btn btn-success pull-right"><i
-                        class="fa fa-credit-card"></i> Concluir Pedido
+                <button (click)="checkOrder(form.value)"
+                        [disabled]="!form.valid || cartItems().length === 0" class="btn btn-success pull-right">
+                    <i class="fa fa-credit-card"></i> Concluir Pedido
                 </button>
             </div>
         </div>
