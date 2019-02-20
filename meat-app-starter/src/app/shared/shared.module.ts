@@ -6,7 +6,11 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {CommonModule} from "@angular/common";
 
 @NgModule({
-    declarations: [InputComponent, RadioComponent, RatingComponent],
+    declarations: [
+        InputComponent,
+        RadioComponent,
+        RatingComponent
+    ],
     imports: [
         FormsModule,
         ReactiveFormsModule,
