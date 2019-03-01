@@ -1,20 +1,21 @@
-import { Component, OnInit } from '@angular/core';
-import { Restaurant } from './restaurant/restaurant.model';
-import { RestaurantsService } from './restaurants.service';
+import {Component, OnInit} from '@angular/core';
+import {Restaurant} from './restaurant/restaurant.model';
+import {RestaurantsService} from './restaurants.service';
 
 @Component({
-  selector: 'mt-restaurants',
-  templateUrl: './restaurants.component.html'
+    selector: 'mt-restaurants',
+    templateUrl: './restaurants.component.html'
 })
 export class RestaurantsComponent implements OnInit {
 
-  restaurants: Restaurant[];
+    restaurants: Restaurant[];
 
-  constructor(private restaurantServices: RestaurantsService) { }
+    constructor(private restaurantServices: RestaurantsService) {
+    }
 
-  ngOnInit() {
-    this.restaurantServices.restaurants()
-    .subscribe(restaurants => this.restaurants = restaurants);
-  }
+    ngOnInit() {
+        this.restaurantServices.restaurants()
+            .subscribe(restaurants => this.restaurants = restaurants);
+    }
 
 }
