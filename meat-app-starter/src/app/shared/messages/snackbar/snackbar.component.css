@@ -1,13 +1,14 @@
 div.snackbar {
-    position: absolute;
+    position: fixed;
+    float: left;
     min-width: 250px;
     max-width: 500px;
-    margin-left: -150px;
+    margin-left: auto;
     background-color: #333;
     color: #fff;
     text-align: center;
     border-radius: 2px;
-    padding: 0px;
+    padding: 16px;
     z-index: 1;
     left: 50%;
     bottom: 30px;
