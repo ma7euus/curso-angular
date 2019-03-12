@@ -3,6 +3,7 @@ import {Express} from "express";
 
 import * as fs from 'fs';
 import * as https from 'https';
+import {handleAuthentication} from "./auth";
 
 const server:Express = jsonServer.create();
 
@@ -13,6 +14,9 @@ const middlewares = jsonServer.defaults();
 server.use(middlewares);
 
 server.use(jsonServer.bodyParser);
+
+// middleware login
+server.post('/login', handleAuthentication);
 
 // Use default router
 server.use(router);
