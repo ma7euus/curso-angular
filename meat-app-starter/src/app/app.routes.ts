@@ -11,10 +11,7 @@ import {LoggedinGuard} from "./security/loggedin.guard";
 
 export const ROUTES: Routes = [
     {path: '', component: HomeComponent},
-    {path: 'about', loadChildren: './about/about.module#AboutModule'},
-    {path: 'order', loadChildren: './order/order.module#OrderModule', canLoad: [LoggedinGuard]},
-    {path: 'order-summary', component: OrderSummaryComponent},
-    {path: 'restaurants', component: RestaurantsComponent},
+    {path: 'login/:to', component: LoginComponent},
     {path: 'login', component: LoginComponent},
     {
         path: 'restaurants/:id', component: RestaurantDetailComponent,
@@ -24,5 +21,9 @@ export const ROUTES: Routes = [
             {path: 'reviews', component: ReviewsComponent}
         ]
     },
+    {path: 'about', loadChildren: './about/about.module#AboutModule'},
+    {path: 'order', loadChildren: './order/order.module#OrderModule', canLoad: [LoggedinGuard]},
+    {path: 'order-summary', component: OrderSummaryComponent},
+    {path: 'restaurants', component: RestaurantsComponent},
     {path: '**', component: NotFoundComponent}
 ];
