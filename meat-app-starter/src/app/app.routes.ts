@@ -22,7 +22,7 @@ export const ROUTES: Routes = [
         ]
     },
     {path: 'about', loadChildren: './about/about.module#AboutModule'},
-    {path: 'order', loadChildren: './order/order.module#OrderModule', canLoad: [LoggedinGuard]},
+    {path: 'order', loadChildren: './order/order.module#OrderModule', canLoad: [LoggedinGuard], canActivate: [LoggedinGuard]},
     {path: 'order-summary', component: OrderSummaryComponent},
     {path: 'restaurants', component: RestaurantsComponent},
     {path: '**', component: NotFoundComponent}
