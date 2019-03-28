@@ -5,7 +5,7 @@ import {CartItem} from "../restaurant-detail/shopping-cart/cart-item.model";
 import {OrderItemModel, OrderModel} from "./order.model";
 import {Router} from "@angular/router";
 import {FormGroup, FormBuilder, Validators, AbstractControl} from '@angular/forms';
-import {isNullOrUndefined} from "util";
+import 'rxjs/add/operator/do';
 
 @Component({
     selector: 'mt-order',
@@ -25,6 +25,8 @@ export class OrderComponent implements OnInit {
         {label: 'Cartão Débito', value: 'DEB'},
         {label: 'Cartão Refeição', value: 'REF'}
     ];
+
+    orderId: string;
 
     constructor(
         private orderService: OrderService,
@@ -80,10 +82,18 @@ export class OrderComponent implements OnInit {
     checkOrder(order: OrderModel) {
         order.orderItems = this.cartItems()
             .map((item: CartItem) => new OrderItemModel(item.quantity, item.menuItem.id));
-        this.orderService.checkOrder(order).subscribe((orderId: string) => {
+        this.orderService.checkOrder(order)
+            .do((orderId: string) => {
+                this.orderId = orderId;
+            })
+            .subscribe((orderId: string) => {
             this.router.navigate(['/order-summary']);
             console.log(`Compra concluída: ${orderId}`);
             this.orderService.clear();
         });
+    }
+
+    isOrderCompleted(): boolean {
+        return this.orderId !== undefined;
     }
 }
