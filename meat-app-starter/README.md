@@ -28,6 +28,11 @@
 
 `nodemon --watch backend backend/dist/server.js`
 
+
+### compilar prod sem problema de CSS
+
+`ng build --prod --extract-css=false`
+
 ## Goodies
 
 Expressões regulares usadas na validação de formulários
