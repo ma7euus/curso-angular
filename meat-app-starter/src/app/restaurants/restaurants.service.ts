@@ -1,11 +1,10 @@
-import { Injectable } from "@angular/core";
-import { HttpClient, HttpParams } from "@angular/common/http";
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { MEAT_API } from '../app.api';
-import { Observable } from "rxjs/Observable";
+import { Observable } from 'rxjs/Observable';
 import { Restaurant } from './restaurant/restaurant.model';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
-import { ErrorHandle } from '../app.error-handle';
 import { MenuItem } from '../restaurant-detail/menu-item/menu-item.model';
 
 @Injectable()
@@ -22,7 +21,7 @@ export class RestaurantsService {
         return this.http.get<Restaurant[]>(`${MEAT_API}/restaurants`, {params: params});
     }
 
-    restaurantById(id: string): Observable<Restaurant>{
+    restaurantById(id: string): Observable<Restaurant> {
        return this.http.get<Restaurant>(`${MEAT_API}/restaurants/${id}`);
     }
 
