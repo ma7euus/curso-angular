@@ -1,11 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import {RadioOption} from '../shared/radio/radio-option';
-import {OrderService} from "./order.service";
-import {CartItem} from "../restaurant-detail/shopping-cart/cart-item.model";
-import {OrderItemModel, OrderModel} from "./order.model";
-import {Router} from "@angular/router";
+import {OrderService} from './order.service';
+import {CartItem} from '../restaurant-detail/shopping-cart/cart-item.model';
+import {OrderItemModel, OrderModel} from './order.model';
+import {Router} from '@angular/router';
 import {FormGroup, FormBuilder, Validators, AbstractControl, FormControl} from '@angular/forms';
-import 'rxjs/add/operator/do';
+import {tap} from 'rxjs/operators';
 
 @Component({
     selector: 'mt-order',
@@ -85,9 +85,9 @@ export class OrderComponent implements OnInit {
         order.orderItems = this.cartItems()
             .map((item: CartItem) => new OrderItemModel(item.quantity, item.menuItem.id));
         this.orderService.checkOrder(order)
-            .do((orderId: string) => {
+            .pipe(tap((orderId: string) => {
                 this.orderId = orderId;
-            })
+            }))
             .subscribe((orderId: string) => {
             this.router.navigate(['/order-summary']);
             console.log(`Compra concluída: ${orderId}`);
