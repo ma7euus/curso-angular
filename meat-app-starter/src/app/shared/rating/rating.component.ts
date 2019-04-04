@@ -23,7 +23,7 @@ export class RatingComponent implements OnInit {
     setRate(r: number) {
         this.rate = r;
         this.previousRate = undefined;
-        this.rated.emit();
+        this.rated.emit(this.rate);
     }
 
     setTempRate(r: number) {

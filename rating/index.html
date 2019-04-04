@@ -1,11 +1,16 @@
 <!DOCTYPE html>
 <html>
-    <head lang="en">
-        <meta charset="UTF-8"/>
-        <link href="rating.css" type="stylesheet">
+    <head>
+        <meta charset="utf-8">
+        <link href="rating.css" type="text/css" rel="stylesheet">
     </head>
     <body>
         <mt-rating></mt-rating>
         <script src="rating.js"></script>
+    <script type="application/javascript" rel="script">
+        document.querySelector('mt-rating').addEventListener('rated', (event)=>{
+           console.log('selected value', event.detail);
+        });
+    </script>
     </body>
 </html>
